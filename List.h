@@ -150,6 +150,7 @@ public:
 			if (node->data == data) return node;
 			node = node->next;
 		}
+		return nullptr;
 	}
 
 	template<class D>
