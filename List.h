@@ -110,24 +110,24 @@ public:
 	}
 
 	template<class D>
-	void List<D>::insertBeforeNode(D data, Node<D>* node)
+	void List<D>::insertBeforeNode(D data, Node<D>* insert_before)
 	{
 		Node<D>* new_node = new Node<D>(data);
-		(node->prev)->next = new_node;
-		new_node->prev = node->prev;
-		new_node->next = node;
-		node->prev = new_node;
+		(insert_before->prev)->next = new_node;
+		new_node->prev = insert_before->prev;
+		new_node->next = insert_before;
+		insert_before->prev = new_node;
 		size++;
 	}
 
 	template<class D>
-	void List<D>::insestAfterNode(D data, Node<D>* node)
+	void List<D>::insestAfterNode(D data, Node<D>* insert_after)
 	{
 		Node<D>* new_node = new Node<D>(data);
-		(node->next)->prev = new_node;
-		new_node->next = (node->next);
-		node->next = new_node;
-		new_node->prev = node;
+		(insert_after->next)->prev = new_node;
+		new_node->next = (insert_after->next);
+		insert_after->next = new_node;
+		new_node->prev = insert_after;
 		size++;
 	}
 
