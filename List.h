@@ -52,16 +52,17 @@ public:
 	~List();
 	void insertBeforeNode(D data, Node<D>* node);
 	void insestAfterNode(D data, Node<D>* node);
-	Node<D>* remove(Node<D>* node);
+	Node<D>* remove(Node<D>* node); //deletes node
 	Node<D>* find(D data);
 	Node<D>* begin();
 	Node<D>* end();
 	Node<D>* getHead();
 	Node<D>* getTail();
+	Node<D>* pop_front(); //pops without deleting
 	int getSize();
 	void destroyNode(Node<D>* to_delete);
-
 };
+
 
 	/*LIST METHODS IMPLEMENTATIONS */
 	template<class D>
@@ -176,6 +177,16 @@ public:
 	{
 		return this->tail;
 	}
+
+	/*returns (head->next) and doesnt delete the node*/
+	template<class D>
+	inline Node<D>* List<D>::pop_front() {
+		Node<D>* to_delete = head->next;
+		head->next = to_delete->next;
+		(to_delete->next)->prev = head;
+		size--;
+		return to_delete;
+	} 
 
 	template<class D>
 	inline int List<D>::getSize()
